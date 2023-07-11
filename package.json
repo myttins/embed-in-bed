@@ -1,5 +1,5 @@
 {
-  "name": "unit-project-starwars",
+  "name": "solo-project",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -7,13 +7,14 @@
     "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open --hot --progress --color \" \"nodemon ./server/server.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "samanthasalley",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.15",
     "@fortawesome/free-regular-svg-icons": "^5.7.2",
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "cookie-parser": "^1.4.6",
     "express": "^4.16.3",
     "mongoose": "^5.11.9",
     "node-fetch": "^2.3.0",
