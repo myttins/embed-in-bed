@@ -15,15 +15,13 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const url1 =
-  'https://www.dailypaws.com/thmb/tPXFfGDaeXPytWTKsYQgU1E3LeU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/siamese-cat-couch_525025708-2000-e914b62ff65f4df39a7f55b87bf49213.jpg';
-const url2 =
-  'https://thumbs.dreamstime.com/b/fat-siamese-cat-over-bed-looking-camera-92042824.jpg';
-const url3 = 'https://i.redd.it/lpduf65tb82a1.jpg';
-const url4 =
-  'https://cdn.petcarerx.com/blog/wp-content-uploads-2016-08-1-21.jpg';
+const url1 = 'https://i.ibb.co/30rYCJf/54123640.png';
+const url2 = 'https://i.ibb.co/m4JNjyS/113163695.png';
+const url3 = 'https://i.ibb.co/pQNLBMY/604877894.png';
+const url4 = 'https://i.ibb.co/rd5YNJt/944424545.png';
 
-const urls = [url1, url2, url3, url4];
+
+let urls = [url1, url2, url3, url4];
 /**
  * handle requests for static files
  */
@@ -34,25 +32,27 @@ app.use('/banana', express.static(path.resolve(__dirname, '../client')));
  */
 
 app.post('/api/download', imageController.download, (req, res) => {
-  console.log(res.locals.directory);
   return res.status(200).json(res.locals.directory);
 });
 
 app.post('/api', async (req, res) => {
-  const configuration = new Configuration({
-    apiKey: OPENAI_API_KEY,
-  });
-  const openai = new OpenAIApi(configuration);
+  // const configuration = new Configuration({
+  //   apiKey: OPENAI_API_KEY,
+  // });
+  // const openai = new OpenAIApi(configuration);
 
-  const response = await openai.createImage({
-    prompt: 'A cute baby sea otter',
-    n: 1,
-    size: '256x256',
-  });
+  // const response = await openai.createImage({
+  //   prompt: req.body.prompt,
+  //   n: 4,
+  //   size: '256x256',
+  // });
+  // response.data.data.forEach((el) => {
+  //   urls.unshift(el.url);
+  // });
 
-  console.log('ai response: ', response.data.data);
+  // console.log(urls);
 
-  return res.status(200).json(urls);
+  return res.status(200).json(urls.slice(0, 4));
 });
 
 app.use('/', (req, res) => {

@@ -5,6 +5,7 @@ import ImageCard from './ImageCard';
 
 import './stylesheets/styles.css';
 
+
 class MainContainer extends Component {
   constructor(props) {
     super(props);
@@ -36,7 +37,7 @@ class MainContainer extends Component {
       .then((data) => {
         this.setState({
           ...this.state,
-          code: data
+          code: data,
         });
       })
       .catch((err) => console.log('handleImgClick function error:', err));
@@ -45,7 +46,7 @@ class MainContainer extends Component {
   generate(e) {
     e.preventDefault();
     const prompt = { prompt: document.getElementById('promptField').value };
-    
+
     fetch('/api', {
       method: 'POST',
       headers: {
@@ -53,11 +54,8 @@ class MainContainer extends Component {
       },
       body: JSON.stringify(prompt),
     })
-      .then((res) => {
-        // console.log(res)
-        return res.json()})
+      .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
         this.setState({
           ...this.state,
           loadedOnce: true,
@@ -71,41 +69,40 @@ class MainContainer extends Component {
     if (this.state.loadedOnce === false) {
       return (
         <div id="promptDiv">
-          <form onSubmit={this.generate}>
-            <input
-              type="text"
-              placeholder="A descriptive prompt "
-              id="promptField"
-            ></input>
-            <input type="submit" value="generate" id="generateButton"></input>
-          </form>
+          <input
+            type="text"
+            placeholder="A descriptive prompt"
+            id="promptField"
+          ></input>
+          <button id="generateButton" onClick={this.generate}>
+            Generate
+          </button>
         </div>
       );
     } else {
       const imgArr = [];
       this.state.images.forEach((el) => {
-        // console.log(el);
-        imgArr.push(<ImageCard url={el} key={el} handleImgClick={this.handleImgClick} />);
+        imgArr.push(
+          <ImageCard url={el} key={el} handleImgClick={this.handleImgClick} />
+        );
       });
 
       return (
         <div id="containerDiv">
           <div id="promptDiv">
-            <form onSubmit={this.generate}>
-              <input
-                type="text"
-                placeholder="A descriptive prompt "
-                id="promptField"
-              ></input>
-              <input type="submit" value="generate" id="generateButton"></input>
-            </form>
+            <input
+              type="text"
+              placeholder="A descriptive prompt"
+              id="promptField"
+            ></input>
+            <button id="generateButton" onClick={this.generate}>
+              Generate
+            </button>
           </div>
           <div id="imageDiv">{imgArr}</div>
-          <div>
-            <pre>
-              <code className="language-css">
-                {this.state.code}
-              </code>
+          <div className='box'>
+            <pre contentEditable='true'>
+              <code className="language-html">{this.state.code}</code>
             </pre>
           </div>
         </div>

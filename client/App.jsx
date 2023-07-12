@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 
 import MainContainer from './MainContainer';
@@ -9,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <h1 id="title">Embed</h1>
+        <h1 id="title">{"< Embed, In Bed /> "}</h1>
         <MainContainer />
       </div>
     );
