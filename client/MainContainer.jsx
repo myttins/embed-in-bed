@@ -14,6 +14,7 @@ class MainContainer extends Component {
       clickedImg: false,
       images: [],
       code: '',
+      animated: false,
     };
 
     this.prompt = '';
@@ -52,6 +53,8 @@ class MainContainer extends Component {
     const value = this.state.code;
     navigator.clipboard.writeText(value);
     console.log(value);
+    document.querySelector('#codeButton').innerHTML = 'Copied';
+
     return;
   }
 
@@ -60,11 +63,13 @@ class MainContainer extends Component {
     const prompt = document.getElementById('promptField').value;
     this.prompt = prompt;
 
+
     const body = { prompt: prompt };
 
     this.setState({
       ...this.state,
       promot: prompt,
+      generate: true,
     });
 
     fetch('/api', {
@@ -80,6 +85,7 @@ class MainContainer extends Component {
           ...this.state,
           loadedOnce: true,
           images: data,
+          generate: false,
         });
       })
       .catch((err) => console.log('generate function error:', err));
@@ -106,8 +112,8 @@ class MainContainer extends Component {
               placeholder="A descriptive prompt"
               id="promptField"
             ></input>
-            <button id="generateButton" onClick={this.generate}>
-              Generate
+            <button className={this.state.generate ? "generate-button generate_loading" : "generate-button"} type='button' onClick={this.generate}>
+              <span className='generate_text'>Generate</span>
             </button>
           </div>
           {(() => {
@@ -125,8 +131,9 @@ class MainContainer extends Component {
                                 {this.state.code}
                               </code>
                               <button
-                                className="codeButton"
+                                id="codeButton"
                                 onClick={this.handleCopy}
+                                type="button"
                               >
                                 Copy
                               </button>

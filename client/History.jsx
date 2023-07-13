@@ -29,7 +29,7 @@ const History = () => {
   }
 
   const historyCards = [];
-  for (let i = 0; i < state.data.length; i++) {
+  for (let i = state.data.length - 1; i >= 0; i--) {
     historyCards.push(
       <HistoryCard
         key={i}

@@ -2,12 +2,9 @@ import React from 'react';
 
 const HistoryCard = (props) => {
   // loop thru elements on array and add them to div
-  const handleDelete = () => {
+  const handleDelete = () => {};
 
-
-  };
-
-  let dbDiv = [];
+  const dbDiv = [];
   for (let i = 0; i < props.urls.length; i++) {
     dbDiv.push(
       <div id="historyCard">
