@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import { Switch, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import ImageCard from './ImageCard';
 
@@ -61,7 +62,6 @@ class MainContainer extends Component {
 
     const body = { prompt: prompt };
 
-
     this.setState({
       ...this.state,
       promot: prompt,
@@ -97,7 +97,7 @@ class MainContainer extends Component {
 
     return (
       <div className="container">
-        <h1 id="title">{'< Embed, In Bed /> '}</h1>
+        <h1 className="title">{'< Embed, In Bed /> '}</h1>
 
         <div id="containerDiv">
           <div id="promptDiv">
@@ -119,17 +119,22 @@ class MainContainer extends Component {
                     {(() => {
                       if (this.state.clickedImg === true) {
                         return (
-                          <pre>
-                            <code className="language-html">
-                              {this.state.code}
-                            </code>
-                            <button
-                              className="codeButton"
-                              onClick={this.handleCopy}
-                            >
-                              Copy
-                            </button>
-                          </pre>
+                          <>
+                            <pre>
+                              <code className="language-html">
+                                {this.state.code}
+                              </code>
+                              <button
+                                className="codeButton"
+                                onClick={this.handleCopy}
+                              >
+                                Copy
+                              </button>
+                            </pre>
+                            <Link to="/history">
+                              <button id="historyButton">History</button>
+                            </Link>
+                          </>
                         );
                       }
                     })()}

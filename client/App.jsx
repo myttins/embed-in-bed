@@ -1,14 +1,22 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import MainContainer from './MainContainer';
+import History from './History';
 
 import './stylesheets/styles.css';
 
 const App = () => {
   return (
     <Router>
-      <Route path='/' component={MainContainer} />
+      <Switch>
+        <Route exact path="/">
+          <MainContainer/>
+        </Route>
+        <Route path="/history">
+          <History/>
+        </Route>
+      </Switch>
     </Router>
   );
 };

@@ -7,7 +7,9 @@ const Schema = mongoose.Schema;
 
 const imageSchema = new Schema({
   prompt: String,
-  url: String,
+  url: [
+    String
+  ],
 });
 
 mongoose
@@ -16,7 +18,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
     // sets the name of the DB that our collections are part of
-    dbName: 'testDB',
+    dbName: 'testDB2',
   })
   .then(() => console.log('Connected to Mongo DB.'))
   .catch((err) => console.log(err));

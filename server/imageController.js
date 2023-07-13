@@ -3,7 +3,6 @@ const path = require('path');
 const download = require('image-downloader');
 const db = require('./model');
 
-
 imageController.download = (req, res, next) => {
   const randStr = Math.floor(Math.random() * 10000000);
 
@@ -34,20 +33,41 @@ imageController.download = (req, res, next) => {
 
   res.locals.url =
     'http://localhost:3000/banana/supersecretdata/' + randStr + '.jpg';
-  res.locals.prompt = req.body.prompt;
+
+  req.body.prompt
+    ? (res.locals.prompt = req.body.prompt)
+    : (res.locals.prompt = '-');
 
   return next();
 };
 
 imageController.addToDb = async (req, res, next) => {
-  const body = {
-    prompt: res.locals.prompt,
-    url: res.locals.url,
-  };
-
-  await db.Image.insertMany(body);
+  await db.Image.updateOne(
+    {
+      prompt: res.locals.prompt,
+    },
+    {
+      $push: { url: res.locals.url },
+    },
+    {
+      upsert: true,
+    }
+  );
 
   return next();
+};
+
+imageController.getHistory = async (req, res, next) => {
+  try {
+    const data = await db.Image.find({});
+    res.locals.data = data;
+    return next();
+  } catch (err) {
+    return next({
+      log: 'imageController.getHistory ERROR',
+      message: err,
+    });
+  }
 };
 
 module.exports = imageController;

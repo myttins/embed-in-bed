@@ -19,20 +19,9 @@ const url2 = 'https://i.ibb.co/m4JNjyS/113163695.png';
 const url3 = 'https://i.ibb.co/pQNLBMY/604877894.png';
 const url4 = 'https://i.ibb.co/rd5YNJt/944424545.png';
 
-
 const urls = [url1, url2, url3, url4];
-/**
- * handle requests for static files
- */
+
 app.use('/banana', express.static(path.resolve(__dirname, '../client')));
-
-/**
- * define route handlers
- */
-
-app.post('/api/download', imageController.download, imageController.addToDb, (req, res) => {
-  return res.status(200).json(res.locals.directory);
-});
 
 app.post('/api', async (req, res) => {
   // const configuration = new Configuration({
@@ -52,9 +41,26 @@ app.post('/api', async (req, res) => {
   return res.status(200).json(urls.slice(0, 4));
 });
 
-app.use('/', (req, res) => {
+app.post(
+  '/api/download',
+  imageController.download,
+  imageController.addToDb,
+  (req, res) => {
+    return res.status(200).json(res.locals.directory);
+  }
+);
+
+app.get('/api/history', imageController.getHistory, (req, res) => {
+  return res.status(200).json(res.locals.data);
+});
+
+app.get('*', (req, res) => {
   return res.sendFile(path.join(__dirname, '../client/index.html'));
 });
+
+// app.use('/', (req, res) => {
+//   return res.sendFile(path.join(__dirname, '../client/index.html'));
+// });
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.sendStatus(404));
