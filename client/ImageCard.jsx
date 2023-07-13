@@ -6,9 +6,9 @@ const ImageCard = (props) => {
   return (
     <img
       src={props.url}
+      className='imgCard'
       width="200"
       height="200"
-      className='imgCard'
       onClick={() => handleImgClick(props.url)}
     ></img>
   );

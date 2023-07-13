@@ -1,9 +1,11 @@
 const imageController = {};
 const path = require('path');
 const download = require('image-downloader');
+const db = require('./model');
+
 
 imageController.download = (req, res, next) => {
-  const randStr = Math.floor(Math.random() * 1000000000);
+  const randStr = Math.floor(Math.random() * 10000000);
 
   const options = {
     url: req.body.url,
@@ -16,7 +18,7 @@ imageController.download = (req, res, next) => {
   download
     .image(options)
     .then((filename) => {
-      console.log('Image saved to: ', filename);
+      console.log('Image saved to:', filename.filename);
     })
     .catch((err) =>
       next({
@@ -29,6 +31,22 @@ imageController.download = (req, res, next) => {
     "<img src='http://localhost:3000/banana/supersecretdata/" +
     randStr +
     ".jpg'></img>";
+
+  res.locals.url =
+    'http://localhost:3000/banana/supersecretdata/' + randStr + '.jpg';
+  res.locals.prompt = req.body.prompt;
+
+  return next();
+};
+
+imageController.addToDb = async (req, res, next) => {
+  const body = {
+    prompt: res.locals.prompt,
+    url: res.locals.url,
+  };
+
+  await db.Image.insertMany(body);
+
   return next();
 };
 

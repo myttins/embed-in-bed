@@ -3,7 +3,6 @@ const ORG_ID = 'org-t6a30kczq0AI83uRjOOfIrpK';
 
 const path = require('path');
 const express = require('express');
-const download = require('image-downloader');
 
 const { Configuration, OpenAIApi } = require('openai');
 
@@ -21,7 +20,7 @@ const url3 = 'https://i.ibb.co/pQNLBMY/604877894.png';
 const url4 = 'https://i.ibb.co/rd5YNJt/944424545.png';
 
 
-let urls = [url1, url2, url3, url4];
+const urls = [url1, url2, url3, url4];
 /**
  * handle requests for static files
  */
@@ -31,7 +30,7 @@ app.use('/banana', express.static(path.resolve(__dirname, '../client')));
  * define route handlers
  */
 
-app.post('/api/download', imageController.download, (req, res) => {
+app.post('/api/download', imageController.download, imageController.addToDb, (req, res) => {
   return res.status(200).json(res.locals.directory);
 });
 
@@ -49,8 +48,6 @@ app.post('/api', async (req, res) => {
   // response.data.data.forEach((el) => {
   //   urls.unshift(el.url);
   // });
-
-  // console.log(urls);
 
   return res.status(200).json(urls.slice(0, 4));
 });

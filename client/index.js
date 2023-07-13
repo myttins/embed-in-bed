@@ -1,7 +1,7 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import App from './App';
+// import React from 'react';
+// import { render } from 'react-dom';
+// import { BrowserRouter, Route, Switch } from 'react-router-dom';
+// import App from './App';
 
 // render(
 //   <BrowserRouter>
@@ -10,9 +10,8 @@ import App from './App';
 //   document.getElementById('app'),
 // );
 
-render(
-  <Switch>
-    <Route path='/'> element={<App />}</Route>
-  </Switch>,
-  document.getElementById('app')
-);
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
