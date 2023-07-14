@@ -18,7 +18,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
     // sets the name of the DB that our collections are part of
-    dbName: 'testDB2',
+    dbName: 'testDB3',
   })
   .then(() => console.log('Connected to Mongo DB.'))
   .catch((err) => console.log(err));

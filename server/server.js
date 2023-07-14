@@ -24,19 +24,19 @@ const urls = [url1, url2, url3, url4];
 app.use('/banana', express.static(path.resolve(__dirname, '../client')));
 
 app.post('/api', async (req, res) => {
-  // const configuration = new Configuration({
-  //   apiKey: OPENAI_API_KEY,
-  // });
-  // const openai = new OpenAIApi(configuration);
+  const configuration = new Configuration({
+    apiKey: OPENAI_API_KEY,
+  });
+  const openai = new OpenAIApi(configuration);
 
-  // const response = await openai.createImage({
-  //   prompt: req.body.prompt,
-  //   n: 4,
-  //   size: '256x256',
-  // });
-  // response.data.data.forEach((el) => {
-  //   urls.unshift(el.url);
-  // });
+  const response = await openai.createImage({
+    prompt: req.body.prompt,
+    n: 4,
+    size: '256x256',
+  });
+  response.data.data.forEach((el) => {
+    urls.unshift(el.url);
+  });
 
 
 
