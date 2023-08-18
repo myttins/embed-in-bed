@@ -1,6 +1,4 @@
-require('dotenv').config({
-  path: '../.env'
-});
+require('dotenv').config();
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const ORG_ID = process.env.ORG_ID;
