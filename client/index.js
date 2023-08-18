@@ -1,17 +1,24 @@
-// import React from 'react';
-// import { render } from 'react-dom';
-// import { BrowserRouter, Route, Switch } from 'react-router-dom';
-// import App from './App';
-
-// render(
-//   <BrowserRouter>
-//     <App />
-//   </BrowserRouter>,
-//   document.getElementById('app'),
-// );
-
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { createRoot } from 'react-dom/client';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import MainContainer from './MainContainer';
+import History from './History';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <MainContainer />,
+    children: [
+      {
+        path: 'history',
+        element: <History />,
+      },
+    ],
+  },
+  {
+    path: '/history',
+  },
+]);
+
+const root = createRoot(document.getElementById('root'));
+root.render(<RouterProvider router={router} />);

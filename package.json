@@ -1,5 +1,5 @@
 {
-  "name": "solo-project",
+  "name": "embed-in-bed",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -15,6 +15,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.7.2",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "cookie-parser": "^1.4.6",
+    "dotenv": "^16.3.1",
     "express": "^4.16.3",
     "highlight": "^0.2.4",
     "image-downloader": "^4.3.0",
@@ -22,13 +23,11 @@
     "mongoose": "^5.13.20",
     "node-fetch": "^2.3.0",
     "openai": "^3.3.0",
-    "prism": "^4.1.2",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-hot-loader": "^4.6.3",
-    "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1",
-    "sass-loader": "^12.3.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.15.0",
+    "sass-loader": "^12.3.0",
+    "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",

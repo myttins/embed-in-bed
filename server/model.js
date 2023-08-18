@@ -1,7 +1,9 @@
+require('dotenv').config({
+  path: '../.env'
+});
 
 const mongoose = require('mongoose');
-const MONGO_URI =
-  'mongodb+srv://kevinli128:grenande@cluster0.sgfobsb.mongodb.net/?retryWrites=true&w=majority';
+const MONGO_URI = process.env.MONGO_URI;
 
 const Schema = mongoose.Schema;
 
