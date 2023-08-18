@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import MainContainer from './MainContainer';
 import History from './History';
+import './style.css';
+
 
 const router = createBrowserRouter([
   {

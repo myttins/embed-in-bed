@@ -1,9 +1,8 @@
-import './stylesheets/styles.css';
-
 import React from 'react';
+import './style.css';
 
 const MainContainer = () => {
-  return <div className='text-3xl font-bold underline'>MainContainer</div>;
+  return <div className='text-3xl font-bold underline text-amber-400'>MainContainer</div>;
 };
 
 export default MainContainer;
