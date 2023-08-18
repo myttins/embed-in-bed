@@ -1,8 +1,22 @@
 import React from 'react';
-import './style.css';
+import '../dist/output.css';
+import { useNavigate } from 'react-router-dom';
 
 const MainContainer = () => {
-  return <div className='text-3xl font-bold underline text-amber-400'>MainContainer</div>;
+  const navigate = useNavigate();
+
+  return (
+    <div className="text-3xl font-bold underline text-amber-400">
+      MainContainer
+      <button
+        onClick={() => {
+          navigate('/history');
+        }}
+      >
+        navigate
+      </button>
+    </div>
+  );
 };
 
 export default MainContainer;
