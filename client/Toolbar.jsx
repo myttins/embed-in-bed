@@ -10,38 +10,40 @@ const Toolbar = (props) => {
       <div
         className={`${
           toolbarIsHidden && 'hidden'
-        } absolute w-screen h-full bg-slate-950 top-0 left-0 absolute opacity-50`}
+        } absolute w-screen h-full bg-slate-950 top-0 left-0 absolute opacity-25`}
         onClick={() => settoolbarIsHidden(true)}
       ></div>
       <div
         className={`${
           toolbarIsHidden && 'hidden'
-        } absolute w-60 h-full bg-white top-0 left-0`}
+        } absolute w-60 h-full bg-white top-0 left-0 pt-10`}
       >
-        <a
-          className="block mx-4 my-2 px-2 py-2 hover:bg-slate-100 rounded-md"
-          onClick={() => {
-            navigate('/home');
-            settoolbarIsHidden(true);
-          }}
-        >
-          Home
-        </a>
-        <a className="block mx-4 my-2 px-2 py-2 hover:bg-slate-100 rounded-md">
-          Profile
-        </a>
-        <a className="block mx-4 my-2 px-2 py-2 hover:bg-slate-100 rounded-md">
-          Login
-        </a>
-        <a
-          className="block mx-4 my-2 px-2 py-2 hover:bg-slate-100 rounded-md"
-          onClick={() => {
-            navigate('/history');
-            settoolbarIsHidden(true);
-          }}
-        >
-          History
-        </a>
+        <ul>
+          <li className="mx-4 my-2 px-2 py-2 hover:bg-slate-100 rounded-md">
+            Login
+          </li>
+          <li className="mx-4 my-2 px-2 py-2 hover:bg-slate-100 rounded-md">
+            Signup
+          </li>
+          <li
+            className="mx-4 my-2 px-2 py-2 hover:bg-slate-100 rounded-md"
+            onClick={() => {
+              navigate('/home');
+              settoolbarIsHidden(true);
+            }}
+          >
+            Home
+          </li>
+          <li
+            className="mx-4 my-2 px-2 py-2 hover:bg-slate-100 rounded-md"
+            onClick={() => {
+              navigate('/history');
+              settoolbarIsHidden(true);
+            }}
+          >
+            History
+          </li>
+        </ul>
       </div>
     </>
   );

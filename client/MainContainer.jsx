@@ -3,12 +3,24 @@ import './style.css';
 import { useNavigate } from 'react-router-dom';
 
 const MainContainer = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [images, setImages] = useState([]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <div className=''>
-      HOME PAGE
+    <div className="w-full">
+      <h1 className="title-font text-center text-2xl  pt-24 pb-4">Embed, In Bed</h1>
+      <div className='flex justify-center'>
+        <form
+          onSubmit={handleSubmit}
+        >
+          <input className='m-2' placeholder="Write a descriptive prompt..."></input>
+          <button className='m-2'>Generate</button>
+        </form>
+      </div>
     </div>
   );
 };

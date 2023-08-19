@@ -39,10 +39,8 @@ const History = () => {
   // }
 
   return (
-    <div className="historyPage">
-      <h1 className="title">{'< History />'}</h1>
-      {historyCards}
-      <div>THIS IS THE HISTORY PAGE</div>
+    <div className='w-full pt-24'>
+      <h1 className='title-font text-center text-2xl'>History</h1>
     </div>
   );
 };
