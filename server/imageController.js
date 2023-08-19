@@ -27,9 +27,9 @@ imageController.download = (req, res, next) => {
     );
 
   res.locals.directory =
-    "<img src='http://localhost:3000/banana/supersecretdata/" +
+    '<img src=\'http://localhost:3000/banana/supersecretdata/' +
     randStr +
-    ".jpg'></img>";
+    '.jpg\'></img>';
 
   res.locals.url =
     'http://localhost:3000/banana/supersecretdata/' + randStr + '.jpg';

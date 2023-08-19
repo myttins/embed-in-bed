@@ -23,7 +23,7 @@ const url4 = 'https://i.ibb.co/rd5YNJt/944424545.png';
 
 const urls = [url1, url2, url3, url4];
 
-app.use('/banana', express.static(path.resolve(__dirname, '../client')));
+app.use('/static', express.static(path.resolve(__dirname, '../client/static')));
 
 app.post('/api', async (req, res) => {
   // const configuration = new Configuration({

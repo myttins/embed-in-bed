@@ -37,7 +37,7 @@ module.exports = {
         target: 'http://localhost:3000/',
         secure: false,
       },
-      '/supersecretdata/**': {
+      '/static/**': {
         target: 'http://localhost:3000/',
         secure: false,
       },
@@ -55,7 +55,7 @@ module.exports = {
       {
         test: /.(css|scss)$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       }
     ],
   },

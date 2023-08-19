@@ -1,20 +1,14 @@
-import React from 'react';
-import '../dist/output.css';
+import React, { useState } from 'react';
+import './style.css';
 import { useNavigate } from 'react-router-dom';
 
 const MainContainer = () => {
   const navigate = useNavigate();
+  const [images, setImages] = useState([]);
 
   return (
-    <div className="text-3xl font-bold underline text-amber-400">
-      MainContainer
-      <button
-        onClick={() => {
-          navigate('/history');
-        }}
-      >
-        navigate
-      </button>
+    <div className=''>
+      HOME PAGE
     </div>
   );
 };
