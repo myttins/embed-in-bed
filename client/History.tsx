@@ -1,7 +1,7 @@
 import React from 'react';
 // import HistoryCard from './HistoryCard';
 
-const History = () => {
+const History = (): any =>   {
   // const [state, setState] = React.useState({
   //   fetchedHistory: false,
   //   data: [],

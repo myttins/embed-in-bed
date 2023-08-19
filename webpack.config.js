@@ -53,10 +53,15 @@ module.exports = {
         },
       },
       {
+        test: /\.(ts|tsx)?$/,
+        exclude: /node_modules/,
+        use: ['ts-loader'],
+      },
+      {
         test: /.(css|scss)$/,
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader', 'postcss-loader'],
-      }
+      },
     ],
   },
   plugins: [
@@ -66,6 +71,6 @@ module.exports = {
   ],
   resolve: {
     // Enable importing JS / JSX files without specifying their extension
-    extensions: ['.js', '.jsx'],
+    extensions: ['.jsx', '.js', '.tsx', '.ts'],
   },
 };
